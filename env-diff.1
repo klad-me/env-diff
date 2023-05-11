@@ -25,11 +25,18 @@ patch (only adds missing paths, like
 
 .SH OPTIONS
 .TP
-.I --help
+.I -h, --help
 displays usage
 .TP
 .I -s, --script
 creates shell-script istead of KEY=VALUE pairs
+.TP
+.I -p, --patch
+create patch for $PATH instead of value setting (only for script mode)
+.TP
+.I -b, --begin
+place new $PATH items at the beginning (default is at the end)
+
 
 .SH EXAMPLE
 .B Script:
