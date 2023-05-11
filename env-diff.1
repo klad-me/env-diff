@@ -1,0 +1,63 @@
+.\" Manpage for env-diff
+.\" Author: me@klad.me
+.TH env-diff 1 "2023-05-11" "0.1" "env-diff man page"
+
+
+.SH NAME
+env-diff \- make environment diff
+
+
+.SH SYNOPSIS
+.B env-diff
+.I [OPTIONS]
+.I prev-env.txt
+
+.SH DESCRIPTION
+Compares current environment variables with previous saved one and creates diff-file (KEY=VALUE pairs or shell-script).
+.br
+In
+.I script
+mode writes
+.I $PATH
+patch (only adds missing paths, like
+.I PATH=$PATH:/new/path
+).
+
+.SH OPTIONS
+.TP
+.I --help
+displays usage
+.TP
+.I -s, --script
+creates shell-script istead of KEY=VALUE pairs
+
+.SH EXAMPLE
+.B Script:
+.br
+PREVENV=`mktemp`
+.br
+env >$PREVENV
+.br
+export NEW_VAR=HelloWorld
+.br
+export PATH=$PATH:/path/to/something
+.br
+env-diff -s $PREVENV
+.br
+
+.br
+.B Result:
+.br
+export NEW_VAR="HelloWorld"
+.br
+export PATH="$PATH:/path/to/something"
+
+
+.SH SEE ALSO
+.TP
+.I env(1)
+
+.SH AUTHOR
+Alexey Presniakov (me@klad.me)
+.br
+https://github.com/klad-me/env-diff
