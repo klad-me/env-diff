@@ -8,8 +8,8 @@ SRC=env-diff.c
 all:	$(EXE)
 
 install: $(EXE)
-	install -m 755 $< /usr/bin/
-	install -m 644 env-diff.1 /usr/share/man/man1/
+	install -m 755 -D $< /usr/bin/env-diff
+	install -m 644 -D env-diff.1 /usr/share/man/man1/env-diff.1
 
 clean:
 	rm -f $(EXE) $(SRC:%=%.o)
